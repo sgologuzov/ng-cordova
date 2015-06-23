@@ -20,8 +20,8 @@ module.exports = {
   },
 
   pluginFiles: [
-    'src/module.js',
-    'src/plugins/*.js'
+    'src/ngcordova.js',
+    'src/plugins/camera.js'
   ],
 
   mockFiles: [

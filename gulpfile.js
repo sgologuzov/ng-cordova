@@ -12,6 +12,8 @@ var gulp = require('gulp'),
   shell = require('gulp-shell'),
   prettify = require('gulp-prettify'),
   changelog = require('conventional-changelog'),
+  babel = require("gulp-babel"),
+  sourcemaps = require("gulp-sourcemaps"),
   q = require('q'),
   fs = require('fs'),
   jscs = require('gulp-jscs');
@@ -35,17 +37,28 @@ gulp.task('build', function () {
     .pipe(gulp.dest(buildConfig.dist));
 
   return gulp.src(buildConfig.pluginFiles)
+    .pipe(sourcemaps.init())
     .pipe(concat('ng-cordova.js'))
+    .pipe(babel())
+    .pipe(sourcemaps.write('.'))
     .pipe(header(buildConfig.closureStart))
     .pipe(footer(buildConfig.closureEnd))
     .pipe(header(buildConfig.banner))
     .pipe(gulp.dest(buildConfig.dist))
     .pipe(gulp.dest(buildConfig.demo.ngCordova))
-    .pipe(uglify())
-    .pipe(header(buildConfig.banner))
-    .pipe(rename({extname: '.min.js'}))
-    .pipe(gulp.dest(buildConfig.dist))
-    .pipe(gulp.dest(buildConfig.demo.ngCordova));
+    //.pipe(uglify())
+    //.pipe(header(buildConfig.banner))
+    //.pipe(rename({extname: '.min.js'}))
+    //.pipe(gulp.dest(buildConfig.dist))
+    //.pipe(gulp.dest(buildConfig.demo.ngCordova));
+});
+
+gulp.task('e2e', function() {
+  return gulp.src('test/e2e/index.es6')
+    .pipe(sourcemaps.init())
+    .pipe(babel())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('test/e2e/'));
 });
 
 gulp.task('changelog', function () {

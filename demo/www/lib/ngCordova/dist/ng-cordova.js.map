@@ -1,0 +1,9 @@
+/*!
+ * ngCordova
+ * v0.1.17-alpha
+ * Copyright 2014 Drifty Co. http://drifty.com/
+ * See LICENSE in this repository for license information
+ */
+(function(){
+{"version":3,"sources":["ngcordova.js","camera.js"],"names":[],"mappings":";;;;;;;;;;;;;;6BAAA,kBAAA;;;;;;;ICGA,MAAA;WAAA,MAAA;0BAAA,MAAA;;;eAAA,MAAA;;WACA,oBAAA,OAAA,EAAA;AACA,aAAA,IAAA,OAAA,CAAA,UAAA,OAAA,EAAA,MAAA,EAAA;AACA,YAAA,CAAA,SAAA,CAAA,MAAA,EAAA;AACA,iBAAA,CAAA,IAAA,CAAA,CAAA;SACA;;AAEA,iBAAA,CAAA,MAAA,CAAA,UAAA,CAAA,UAAA,SAAA,EAAA;AACA,iBAAA,CAAA,SAAA,CAAA,CAAA;SACA,EAAA,UAAA,GAAA,EAAA;AACA,gBAAA,CAAA,GAAA,CAAA,CAAA;SACA,EAAA,OAAA,CAAA,CAAA;OACA,CAAA,CAAA;KACA;;;WACA,mBAAA;AACA,aAAA,IAAA,OAAA,CAAA,UAAA,OAAA,EAAA,MAAA,EAAA;AACA,iBAAA,CAAA,MAAA,CAAA,OAAA,CAAA,YAAA;AACA,iBAAA,EAAA,CAAA;SACA,EAAA,UAAA,GAAA,EAAA;AACA,gBAAA,CAAA,GAAA,CAAA,CAAA;SACA,CAAA,CAAA;OACA,CAAA,CAAA;KACA;;;SAtBA,MAAA;;;QAAA,MAAA,GAAA,MAAA","file":"ng-cordova.js","sourcesContent":["export * from './plugins/camera';\n","// install   :   cordova plugin add cordova-plugin-camera\n// link      :   https://github.com/apache/cordova-plugin-camera\n\nexport class Camera {\n  static getPicture(options) {\n    return new Promise((resolve, reject) => {\n      if (!navigator.camera) {\n        resolve(null);\n      }\n\n      navigator.camera.getPicture(function (imageData) {\n        resolve(imageData);\n      }, function (err) {\n        reject(err);\n      }, options);\n    });\n  }\n  static cleanup() {\n    return new Promise((resolve, reject) => {\n      navigator.camera.cleanup(function () {\n        resolve();\n      }, function (err) {\n        reject(err);\n      });\n    });\n  }\n}\n"],"sourceRoot":"/source/"}
+})();
