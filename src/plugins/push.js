@@ -44,6 +44,17 @@ angular.module('ngCordova.plugins.push', [])
         return q.promise;
       },
 
+      subscribe: function (token, topic) {
+        var q = $q.defer();
+        $window.plugins.pushNotification.subscribe(function (result) {
+          q.resolve(result);
+        }, function (error) {
+          q.reject(error);
+        }, token, topic);
+
+        return q.promise;
+      },
+
       // iOS only
       setBadgeNumber: function (number) {
         var q = $q.defer();
