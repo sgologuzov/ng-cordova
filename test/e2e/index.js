@@ -1,27 +1,36 @@
-'use strict';
+System.register('index', ['ngcordova'], function (_export) {
+  'use strict';
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  var Camera, App, a;
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _ngcordova = require('ngcordova');
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var App = (function () {
-  function App() {
-    _classCallCheck(this, App);
+  return {
+    setters: [function (_ngcordova) {
+      Camera = _ngcordova.Camera;
+    }],
+    execute: function () {
+      App = (function () {
+        function App() {
+          _classCallCheck(this, App);
 
-    console.log('App start');
-  }
+          console.log('App start');
+        }
 
-  _createClass(App, [{
-    key: 'takePicture',
-    value: function takePicture() {
-      _ngcordova.Camera.getPicture().then(function (data) {});
+        _createClass(App, [{
+          key: 'takePicture',
+          value: function takePicture() {
+            Camera.getPicture().then(function (data) {});
+          }
+        }]);
+
+        return App;
+      })();
+
+      a = new App();
     }
-  }]);
-
-  return App;
-})();
-
-var a = new App();
+  };
+});
 //# sourceMappingURL=index.js.map

@@ -39,7 +39,10 @@ gulp.task('build', function () {
   return gulp.src(buildConfig.pluginFiles)
     .pipe(sourcemaps.init())
     .pipe(concat('ng-cordova.js'))
-    .pipe(babel())
+    .pipe(babel({
+      moduleIds: true,
+      modules: 'system'
+    }))
     .pipe(sourcemaps.write('.'))
     .pipe(header(buildConfig.closureStart))
     .pipe(footer(buildConfig.closureEnd))
@@ -56,7 +59,10 @@ gulp.task('build', function () {
 gulp.task('e2e', function() {
   return gulp.src('test/e2e/index.es6')
     .pipe(sourcemaps.init())
-    .pipe(babel())
+    .pipe(babel({
+      moduleIds: true,
+      modules: 'system'
+    }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('test/e2e/'));
 });
