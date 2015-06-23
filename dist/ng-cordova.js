@@ -5,33 +5,28 @@
  * See LICENSE in this repository for license information
  */
 (function(){
-System.register('ng-cordova', ['./plugins/camera'], function (_export) {
-  'use strict';
+System.register("ng-cordova", [], function (_export) {
+  // install   :   cordova plugin add cordova-plugin-camera
+  // link      :   https://github.com/apache/cordova-plugin-camera
+
+  "use strict";
 
   var Camera;
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
   return {
-    setters: [function (_pluginsCamera) {
-      for (var _key in _pluginsCamera) {
-        _export(_key, _pluginsCamera[_key]);
-      }
-    }],
+    setters: [],
     execute: function () {
-
-      // install   :   cordova plugin add cordova-plugin-camera
-      // link      :   https://github.com/apache/cordova-plugin-camera
-
       Camera = (function () {
         function Camera() {
           _classCallCheck(this, Camera);
         }
 
         _createClass(Camera, null, [{
-          key: 'getPicture',
+          key: "getPicture",
           value: function getPicture(options) {
             return new Promise(function (resolve, reject) {
               if (!navigator.camera) {
@@ -46,7 +41,7 @@ System.register('ng-cordova', ['./plugins/camera'], function (_export) {
             });
           }
         }, {
-          key: 'cleanup',
+          key: "cleanup",
           value: function cleanup() {
             return new Promise(function (resolve, reject) {
               navigator.camera.cleanup(function () {
@@ -61,7 +56,7 @@ System.register('ng-cordova', ['./plugins/camera'], function (_export) {
         return Camera;
       })();
 
-      _export('Camera', Camera);
+      _export("Camera", Camera);
     }
   };
 });

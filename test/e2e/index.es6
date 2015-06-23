@@ -1,4 +1,4 @@
-import {Camera} from 'ngcordova';
+import {Camera} from 'ng-cordova';
 
 class App {
   constructor() {
@@ -13,3 +13,4 @@ class App {
 
 
 let a = new App();
+a.takePicture();

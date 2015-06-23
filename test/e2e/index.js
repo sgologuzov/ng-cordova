@@ -1,4 +1,4 @@
-System.register('index', ['ngcordova'], function (_export) {
+System.register('index', ['ng-cordova'], function (_export) {
   'use strict';
 
   var Camera, App, a;
@@ -8,8 +8,8 @@ System.register('index', ['ngcordova'], function (_export) {
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   return {
-    setters: [function (_ngcordova) {
-      Camera = _ngcordova.Camera;
+    setters: [function (_ngCordova) {
+      Camera = _ngCordova.Camera;
     }],
     execute: function () {
       App = (function () {
@@ -30,6 +30,8 @@ System.register('index', ['ngcordova'], function (_export) {
       })();
 
       a = new App();
+
+      a.takePicture();
     }
   };
 });
